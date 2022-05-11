@@ -2,8 +2,7 @@
 #define SPACE 10
 
 using namespace std;
-
-//pendeklarasian class sebuah tree 
+ 
 class TreeNode {
   public:
     int value;
@@ -36,11 +35,8 @@ class BST {
     }
   }
 
-//fungsi untuk menambahkan node baru
   void insertNode(TreeNode * new_node) {
-  	//jika root masih kosong
     if (root == NULL) {
-      //pengalokasian memori dari node yang telah dibuat
       root = new_node;
       cout << "Value Inserted as root node!" << endl;
     } else {
@@ -92,49 +88,40 @@ class BST {
 	}
 
   void print2D(TreeNode * r, int space) {
-    if (r == NULL) // Base case  1
+    if (r == NULL) 
       return;
-    space += SPACE; // memperluas jarak antara level 2
-    print2D(r -> right, space); // Proses anak kanan dulu 3
+    space += SPACE; 
+    print2D(r -> right, space); 
     cout << endl;
-    for (int i = SPACE; i < space; i++) // 5 
-      cout << " "; // 5.1  
-    cout << r -> value << "\n"; // 6
-    print2D(r -> left, space); // proses anak kiri 7
+    for (int i = SPACE; i < space; i++) 
+      cout << " "; 
+    cout << r -> value << "\n"; 
+    print2D(r -> left, space);
   }
 
-  void printPreorder(TreeNode * r) //(simpul saat ini, Kiri, Kanan)
+  void printPreorder(TreeNode * r) 
   {
     if (r == NULL)
       return;
-    /* mencetak data simpul pertama*/
     cout << r -> value << " ";
-    /* kemudian muncul kembali di subpohon kiri */
     printPreorder(r -> left);
-    /* sekarang muncul kembali di subpohon kanan*/
     printPreorder(r -> right);
   }
 
-  void printInorder(TreeNode * r) //  (kiri, simpul terkini, kanan)
+  void printInorder(TreeNode * r) 
   {
     if (r == NULL)
       return;
-    /* pertama muncul kembali di anak kiri*/
     printInorder(r -> left);
-    /* kemudian cetak data di simpul */
     cout << r -> value << " ";
-    /* sekarang muncul kembali di anak kanan*/
     printInorder(r -> right);
   }
-  void printPostorder(TreeNode * r) //(kiri, kanan, akar)
+  void printPostorder(TreeNode * r) 
   {
     if (r == NULL)
-      return;
-    // pertama muncul kembali di subpohon kiri 
+      return; 
     printPostorder(r -> left);
-    // kemudian muncul kembali di subpohon kanan
     printPostorder(r -> right);
-    // sekarang sepakat dengan simpul
     cout << r -> value << " ";
   }
 
@@ -171,18 +158,15 @@ class BST {
     if (r == NULL)
       return -1;
     else {
-      /* tinggi komputer satu sama lain/ persaaman tinggi sampul kanan / kiri*/
       int lheight = height(r -> left);
       int rheight = height(r -> right);
 
-      /* menggunakan yang terbesar*/
       if (lheight > rheight)
         return (lheight + 1);
       else return (rheight + 1);
     }
   }
 
-  /* mencetak simpul pada level */
   void printGivenLevel(TreeNode * r, int level) {
     if (r == NULL)
       return;
@@ -202,7 +186,6 @@ class BST {
 
   TreeNode * minValueNode(TreeNode * node) {
     TreeNode * current = node;
-    /* perulangan untuk menemukan daun paling kiri */
     while (current -> left != NULL) {
       current = current -> left;
     }
@@ -225,7 +208,6 @@ int main() {
     cout << "0. Exit Program" << endl;
 
     cin >> option;
-    //simpul n1;
     TreeNode * new_node = new TreeNode();
 
     switch (option) {
